@@ -1,0 +1,70 @@
+body {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#app {
+  
+  z-index: 99999;
+  background: white;
+  color: black;
+  
+}
+
+#export {
+  top: 10px;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 3px;
+}
+
+.leaflet-popup-content {
+  width: 200px !important;
+  padding: 20px 8px;
+}
+
+
+.autocomplete {
+  background: #fff;
+  height: 100%;
+  width: 420px;
+  padding: 15px 20px;
+  overflow: hidden;
+}
+
+
+
+/* Style buttons */
+.btn-link {
+  
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: #f1f1f1 !important; /* White text */
+  padding: 8px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  border-radius: 3px;
+  text-decoration: none;
+  
+}
+
+/* Darker background on mouse-over */
+.btn-link:hover {
+  background-color: RoyalBlue;
+  text-decoration: none;
+}
