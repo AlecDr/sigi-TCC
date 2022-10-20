@@ -19,7 +19,7 @@
                     <label class="control-label text-primary">{{ __('imovel.lote') }}</label>
                     <p>{{ $imovel->lote}}</p>
                     <label class="control-label text-primary">{{ __('imovel.name_owner') }}</label>
-                    <p>{{ $imovel->name_owner}}</p>
+                    <p>{{ $imovel->owner->name_owner}}</p>
                     <label class="control-label text-primary">{{ __('imovel.latitude') }}</label>
                     <p>{{ $imovel->latitude }}</p>
                     <label class="control-label text-primary">{{ __('imovel.longitude') }}</label>

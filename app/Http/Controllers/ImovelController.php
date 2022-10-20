@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Imovel;
+use App\Owner;
 use Illuminate\Http\Request;
 
 class ImovelController extends Controller
@@ -62,6 +63,15 @@ class ImovelController extends Controller
         
         $newImovel['creator_id'] = auth()->id();
 
+        #aqui está o role, antes eu verifico se aquele owner para aquele CPF já existe
+        #se não existir, cria, se existir apenas usa o que já existe
+        $owner = Owner::where('cpf',$newImovel['cpf'])->first();
+        if ($owner == null){
+            $owner = Owner::create($newImovel);
+        }
+        #uma vez criado ou buscou do banco, seto a id no imovel para ser salvo
+        $newImovel['owner_id'] = $owner->id;
+
         $imovel = Imovel::create($newImovel);
 
         return redirect()->route('imovels.show', $imovel);
@@ -112,6 +122,18 @@ class ImovelController extends Controller
             'latitude'  => 'nullable|required_with:longitude|max:15',
             'longitude' => 'nullable|required_with:latitude|max:15',
         ]);
+
+        #detalhe, isso nao foi feito para alterar os dados do owner, apenas cadastrar ou usar um que já existe
+        #aqui está o role, antes eu verifico se aquele owner para aquele CPF já existe
+        #se não existir, cria, se existir apenas usa o que já existe
+        $owner = Owner::where('cpf',$imovelData['cpf'])->first();
+        if ($owner == null){
+            $owner = Owner::create($imovelData);
+        }
+        #uma vez criado ou buscou do banco, seto a id no imovel para ser salvo
+        $newImovel['owner_id'] = $owner->id;
+
+
         
         $imovel->update($imovelData);
 

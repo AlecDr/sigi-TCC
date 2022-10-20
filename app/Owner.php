@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Owner extends Model
 {
+    protected $fillable = [
+        'name_owner','cpf',
+     ];
+
     use HasFactory;
     
         /**
@@ -14,9 +18,10 @@ class Owner extends Model
          *
          * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
          */
-        public function imovels(): BelongsTo
-        {
-            return $this->belongsTo(Imovel::class, 'imovel_id', 'id');
+        public function imovels() {
+            #Um Dono pode ter vários imóveis
+            #em vez de belongsTo (Pertence á) é hasMany (Tem muitos)
+            return $this->hasMany(Imovel::class);
         }
     
 }

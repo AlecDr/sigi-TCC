@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateImovelsTable extends Migration
+class CreateImoveisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,26 +14,31 @@ class CreateImovelsTable extends Migration
     public function up()
     {
         
-        Schema::create('imovels', function (Blueprint $table) {
+        Schema::create('imoveis', function (Blueprint $table) {
             $table->id();
             $table->string('seq')->unique();
             $table->string('setor')->nullable();
             $table->string('quadra')->nullable();
             $table->string('lote')->nullable();
-            $table->unsignedInteger('cpf_id');
-          
-            $table->unsignedInteger('name_owner_id');
+
+            #$table->unsignedInteger('cpf_id'); além de estar atrapalhando é desnecessário
+            #$table->unsignedInteger('name_owner_id'); era pra ter só na tabela de owner
             
             $table->string('latitude', 15)->nullable();
             $table->string('longitude', 15)->nullable();
             $table->unsignedInteger('creator_id');
-           
+
+            #relacionamento apenas pela ID
+            #$table->foreign('owner_id')->references('id')->on('users')->onDelete('restrict');
+            #a linha de baixo já faz o relacionamento com a id da tabela owners 
+            #(Por isso é importante as tabelas estarem em ingles)
+            $table->foreignId("owner_id")->constrained();
            
 
             $table->timestamps();
 
-            $table->foreign('cpf_id')->references('id')->on('owners')->onDelete('restrict');
-            $table->foreign('name_owner_id')->references('id')->on('owners')->onDelete('restrict');
+            #$table->foreign('cpf_id')->references('id')->on('owners')->onDelete('restrict');
+            #$table->foreign('name_owner_id')->references('id')->on('owners')->onDelete('restrict');
             $table->foreign('creator_id')->references('id')->on('users')->onDelete('restrict');
           
 
@@ -47,7 +52,7 @@ class CreateImovelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('imovels');
+        Schema::dropIfExists('imoveis');
     }
 };
 

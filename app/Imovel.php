@@ -8,15 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Imovel extends Model
 {
     use HasFactory;
+    protected $table = 'imoveis';
+
      /**
-         * Get all of the Owner for the Imovel
-         *
-         * @return \Illuminate\Database\Eloquent\Relations\HasMany
-         */
-        public function owner(): HasMany
-        {
-            return $this->hasMany(Owner::class, 'owner_id', 'id');
-        }
+     * Get all of the Owner for the Imovel
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function owner() {
+        #Aqui foi o contrário.. era pra um imóvel pertencer a um dono
+        #belongsTo
+        #lembrando, que se você não mudar o nome da id, e usar tabela_id na chave estrangeira,
+        #nao precisa definir os outros parametros, só a classe a qual ela pertence, fica mais simples
+        return $this->belongsTo(Owner::class);
+    }
     
 
     /**
@@ -26,8 +31,8 @@ class Imovel extends Model
      */
    
     protected $fillable = [
-       'imovel_type_id','seq','setor','quadra','lote', 'cpf_id', 
-       'name_owner_id','latitude','longitude','creator_id',
+       'imovel_type_id','seq','setor','quadra','lote',
+       'owner_id','latitude','longitude','creator_id',
     ];
 
        

@@ -15,8 +15,8 @@
                         <tr><td>{{ __('imovel.setor') }}</td><td>{{ $imovel->setor }}</td></tr>                     
                         <tr><td>{{ __('imovel.quadra') }}</td><td>{{ $imovel->quadra }}</td></tr>
                         <tr><td>{{ __('imovel.lote') }}</td><td>{{ $imovel->lote }}</td></tr>
-                        <tr><td>{{ __('imovel.cpf') }}</td><td>{{ $imovel->cpf }}</td></tr>
-                        <tr><td>{{ __('imovel.name_owner') }}</td><td>{{ $imovel->name_owner }}</td></tr>
+                        <tr><td>{{ __('imovel.cpf') }}</td><td>{{ $imovel->owner->cpf }}</td></tr>
+                        <tr><td>{{ __('imovel.name_owner') }}</td><td>{{ $imovel->owner->name_owner }}</td></tr>
                         <tr><td>{{ __('imovel.latitude') }}</td><td>{{ $imovel->latitude }}</td></tr>
                         <tr><td>{{ __('imovel.longitude') }}</td><td>{{ $imovel->longitude }}</td></tr>
                       
