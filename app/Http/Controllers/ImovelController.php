@@ -19,12 +19,12 @@ class ImovelController extends Controller
         $this->authorize('manage_imovel');
 
         $imovelQuery = Imovel::query();
-        $imovelQuery->where('seq', 'like', '%'.request('q').'%');
-        $imovelQuery->orWhere('name_owner_id', 'like', '%'.request('q').'%');
-        $imovels = $imovelQuery->paginate(5);
+        #$imovelQuery->where('seq', 'like', '%'.request('q').'%');
+       # $imovelQuery->where('name_owner_id', 'like', '%'.request('q').'%');
+        $imoveis = $imovelQuery->paginate(5);
 
           
-        return view('imovels.index', compact('imovels'));
+        return view('imoveis.index', compact('imoveis'));
     }
 
     /**
@@ -34,7 +34,7 @@ class ImovelController extends Controller
     {
         $this->authorize('create', new Imovel);
       
-        return view('imovels.create');
+        return view('imoveis.create');
 
     }
 
@@ -65,8 +65,8 @@ class ImovelController extends Controller
 
         #aqui está o role, antes eu verifico se aquele owner para aquele CPF já existe
         #se não existir, cria, se existir apenas usa o que já existe
-        $owner = Owner::where('cpf',$newImovel['cpf'])->first();
-        if ($owner == null){
+        $owner = Owner::where('cpf', $newImovel['cpf'])->first();
+        if ($owner == null) {
             $owner = Owner::create($newImovel);
         }
         #uma vez criado ou buscou do banco, seto a id no imovel para ser salvo
@@ -74,7 +74,7 @@ class ImovelController extends Controller
 
         $imovel = Imovel::create($newImovel);
 
-        return redirect()->route('imovels.show', $imovel);
+        return redirect()->route('imoveis.show', $imovel);
     }
 
     /**
@@ -85,7 +85,7 @@ class ImovelController extends Controller
      */
     public function show(Imovel $imovel)
     {
-        return view('imovels.show', compact('imovel'));
+        return view('imoveis.show', compact('imovel'));
     }
 
     /**
@@ -98,7 +98,7 @@ class ImovelController extends Controller
     {
         $this->authorize('update', $imovel);
 
-        return view('imovels.edit', compact('imovel'));
+        return view('imoveis.edit', compact('imovel'));
     }
 
     /**
@@ -126,18 +126,18 @@ class ImovelController extends Controller
         #detalhe, isso nao foi feito para alterar os dados do owner, apenas cadastrar ou usar um que já existe
         #aqui está o role, antes eu verifico se aquele owner para aquele CPF já existe
         #se não existir, cria, se existir apenas usa o que já existe
-        $owner = Owner::where('cpf',$imovelData['cpf'])->first();
-        if ($owner == null){
+        $owner = Owner::where('cpf', $imovelData['cpf'])->first();
+        if ($owner == null) {
             $owner = Owner::create($imovelData);
         }
-        #uma vez criado ou buscou do banco, seto a id no imovel para ser salvo
+        
         $newImovel['owner_id'] = $owner->id;
 
 
         
         $imovel->update($imovelData);
 
-        return redirect()->route('imovels.show', $imovel);
+        return redirect()->route('imoveis.show', $imovel);
     }
 
     /**
@@ -154,7 +154,7 @@ class ImovelController extends Controller
         $request->validate(['imovel_id' => 'required']);
 
         if ($request->get('imovel_id') == $imovel->id && $imovel->delete()) {
-            return redirect()->route('imovels.index');
+            return redirect()->route('imoveis.index');
         }
 
         return back();

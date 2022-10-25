@@ -14,6 +14,6 @@ class ImovelMapController extends Controller
      */
     public function index(Request $request)
     {
-        return view('imovels.map');
+        return view('imoveis.map');
     }
 }

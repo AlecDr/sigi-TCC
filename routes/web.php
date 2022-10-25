@@ -13,5 +13,5 @@ Route::get('todos_imoveis', 'ImovelMapController@index')->name('mapa');
 
 Route::get('/todos_imoveis', 'ImovelMapController@index')->name('imovel_map.index');
 
-Route::resource('imovels', 'ImovelController');
+Route::resource('imoveis', 'ImovelController');
 

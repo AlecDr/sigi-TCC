@@ -11,5 +11,5 @@ Route::group(['as' => 'api.', 'namespace' => 'Api'], function () {
     /*
      * 
      */
-    Route::get('imovels', 'ImovelController@index')->name('imovels.index');
+    Route::get('imoveis', 'ImovelController@index')->name('imoveis.index');
 });

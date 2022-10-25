@@ -38,7 +38,8 @@ crossorigin=""/>
     var markers = L.markerClusterGroup();
 
     map.locate({setView: true, maxZoom: 16});
-    axios.get('{{ route('api.imovels.index') }}')
+    
+    axios.get('{{ route('api.imoveis.index') }}')
     .then(function (response) {
         var marker = L.geoJSON(response.data, {
             pointToLayer: function(geoJsonPoint, latlng) {
@@ -68,7 +69,7 @@ crossorigin=""/>
         };
 
         var popupContent = "<center></center>";
-        popupContent += '<center><a class="btn-link" href="{{ route('imovels.create') }}?latitude=' + latitude + '&longitude=' + longitude + '">Adicionar novo lote</a></center>';
+        popupContent += '<center><a class="btn-link" href="{{ route('imoveis.create') }}?latitude=' + latitude + '&longitude=' + longitude + '">Adicionar novo lote</a></center>';
 
         theMarker = L.marker([latitude, longitude]).addTo(map);
         theMarker.bindPopup(popupContent)

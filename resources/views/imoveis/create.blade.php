@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', __('Proprietário.create'))
+@section('title', __('imovel.create'))
 
 @section('content')
 <br>
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card">
-            <div class="card-header">{{ __('Proprietário.create') }}</div>
-            <form method="POST" action="{{ route('imovels.store') }}" accept-charset="UTF-8">
+            <div class="card-header">{{ __('imovel.create') }}</div>
+            <form method="POST" action="{{ route('imoveis.store') }}" accept-charset="UTF-8">
                 {{ csrf_field() }}
                 <div class="card-body">
                     <div class="form-group">
@@ -33,6 +33,7 @@
                             {!! $errors->first('lote', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                         </div>
                     </div> 
+                    
                     <div class="form-group">
                         <label for="cpf" class="control-label">{{ __('imovel.cpf') }}</label>
                         <input id="cpf" type="text" class="form-control{{ $errors->has('cpf') ? ' é inválido' : '' }}" name="cpf" value="{{ old('cpf') }}" required>
@@ -64,7 +65,7 @@
                 </div>
                 <div class="card-footer">
                     <input type="submit" value="{{ __('imovel.create') }}" class="btn btn-success">
-                    <a href="{{ route('imovels.index') }}" class="btn btn-link">{{ __('app.cancel') }}</a>
+                    <a href="{{ route('imoveis.index') }}" class="btn btn-link">{{ __('app.cancel') }}</a>
                 </div>
             </form>
         </div>

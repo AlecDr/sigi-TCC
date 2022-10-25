@@ -18,6 +18,8 @@
                     <p>{{ $imovel->quadra }}</p>
                     <label class="control-label text-primary">{{ __('imovel.lote') }}</label>
                     <p>{{ $imovel->lote}}</p>
+                    <label class="control-label text-primary">{{ __('imovel.cpf') }}</label>
+                    <p>{{ $imovel->owner->cpf}}</p>
                     <label class="control-label text-primary">{{ __('imovel.name_owner') }}</label>
                     <p>{{ $imovel->owner->name_owner}}</p>
                     <label class="control-label text-primary">{{ __('imovel.latitude') }}</label>
@@ -29,19 +31,19 @@
                 <hr style="margin:0">
                 <div class="card-body text-danger">{{ __('imovel.delete_confirm') }}</div>
                 <div class="card-footer">
-                    <form method="POST" action="{{ route('imovels.destroy', $imovel) }}" accept-charset="UTF-8" onsubmit="return confirm(&quot;{{ __('app.delete_confirm') }}&quot;)" class="del-form float-right" style="display: inline;">
+                    <form method="POST" action="{{ route('imoveis.destroy', $imovel) }}" accept-charset="UTF-8" onsubmit="return confirm(&quot;{{ __('app.delete_confirm') }}&quot;)" class="del-form float-right" style="display: inline;">
                         {{ csrf_field() }} {{ method_field('delete') }}
                         <input name="imovel_id" type="hidden" value="{{ $imovel->id }}">
                         <button type="submit" class="btn btn-danger">{{ __('app.delete_confirm_button') }}</button>
                     </form>
-                    <a href="{{ route('imovels.edit', $imovel) }}" class="btn btn-link">{{ __('app.cancel') }}</a>
+                    <a href="{{ route('imoveis.edit', $imovel) }}" class="btn btn-link">{{ __('app.cancel') }}</a>
                 </div>
             </div>
         @endcan
         @else
         <div class="card">
             <div class="card-header">{{ __('imovel.edit') }}</div>
-            <form method="POST" action="{{ route('imovels.update', $imovel) }}" accept-charset="UTF-8">
+            <form method="POST" action="{{ route('imoveis.update', $imovel) }}" accept-charset="UTF-8">
                 {{ csrf_field() }} {{ method_field('patch') }}
                 <div class="card-body">
                     <div class="form-group">
@@ -97,9 +99,9 @@
                 </div>
                 <div class="card-footer">
                     <input type="submit" value="{{ __('imovel.update') }}" class="btn btn-success">
-                    <a href="{{ route('imovels.show', $imovel) }}" class="btn btn-link">{{ __('app.cancel') }}</a>
+                    <a href="{{ route('imoveis.show', $imovel) }}" class="btn btn-link">{{ __('app.cancel') }}</a>
                     @can('delete', $imovel)
-                        <a href="{{ route('imovels.edit', [$imovel, 'action' => 'delete']) }}" id="del-imovel-{{ $imovel->id }}" class="btn btn-danger float-right">{{ __('app.delete') }}</a>
+                        <a href="{{ route('imoveis.edit', [$imovel, 'action' => 'delete']) }}" id="del-imovel-{{ $imovel->id }}" class="btn btn-danger float-right">{{ __('app.delete') }}</a>
                     @endcan
                 </div>
             </form>

@@ -7,6 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Imovel extends Model
 {
+
+    /**
+     * 
+     *
+     * @var array
+     */
+   
+    protected $fillable = [
+        'seq','setor','quadra','lote', 
+        'owner_id','latitude','longitude','creator_id',
+    ];
+
+    
     use HasFactory;
     protected $table = 'imoveis';
 
@@ -16,27 +29,9 @@ class Imovel extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function owner() {
-        #Aqui foi o contrário.. era pra um imóvel pertencer a um dono
-        #belongsTo
-        #lembrando, que se você não mudar o nome da id, e usar tabela_id na chave estrangeira,
-        #nao precisa definir os outros parametros, só a classe a qual ela pertence, fica mais simples
+        
         return $this->belongsTo(Owner::class);
     }
-    
-
-    /**
-     * 
-     *
-     * @var array
-     */
-   
-    protected $fillable = [
-       'imovel_type_id','seq','setor','quadra','lote',
-       'owner_id','latitude','longitude','creator_id',
-    ];
-
-       
-    
 
     /**
      * 
@@ -57,7 +52,7 @@ class Imovel extends Model
         $title = __('app.show_detail_title', [
             'seq' => $this->seq, 'type' => __('imovel.imovel'),
         ]);
-        $link = '<a href="'.route('imovels.show', $this).'"';
+        $link = '<a href="'.route('imoveis.show', $this).'"';
         $link .= ' title="'.$title.'">';
         $link .= $this->seq;
         $link .= '</a>';

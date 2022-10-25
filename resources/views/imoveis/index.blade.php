@@ -7,7 +7,7 @@
     <br>
     <div class="float-right">
         @can('create', new App\Imovel)
-            <a href="{{ route('imovels.create') }}" class="btn btn-success">{{ __('imovel.create') }}</a>
+            <a href="{{ route('imoveis.create') }}" class="btn btn-success">{{ __('imovel.create') }}</a>
         @endcan
     </div>
     <br>
@@ -23,7 +23,7 @@
                         <input placeholder="{{ __('imovel.search_text') }}" name="q" type="text" id="q" class="form-control mx-sm-2" value="{{ request('q') }}">
                     </div>
                     <input type="submit" value="{{ __('imovel.search') }}" class="btn btn-secondary">
-                    <a href="{{ route('imovels.index') }}" class="btn btn-link">{{ __('app.reset') }}</a>
+                    <a href="{{ route('imoveis.index') }}" class="btn btn-link">{{ __('app.reset') }}</a>
                 </form>
             </div>
             <table class="table table-sm table-responsive-sm">
@@ -42,9 +42,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($imovels as $key => $imovel)
+                    @foreach($imoveis as $key => $imovel)
                     <tr>
-                        <td class="text-center">{{ $imovels->firstItem() + $key }}</td>
+                        <td class="text-center">{{ $imoveis->firstItem() + $key }}</td>
                         <td>{!! $imovel->seq_link !!}</td>
                         <td>{{ $imovel->setor }}</td>
                         <td>{{ $imovel->quadra }}</td>
@@ -55,15 +55,15 @@
                         <td>{{ $imovel->longitude }}</td>
 
                         <td class="text-center">
-                            <a href="{{ route('imovels.show', $imovel) }}" id="show-imovel-{{ $imovel->id }}">{{ __('app.show') }}</a>
+                            <a href="{{ route('imoveis.show', $imovel) }}" id="show-imovel-{{ $imovel->id }}">{{ __('app.show') }}</a>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            <div class="card-body">{{ $imovels->appends(Request::except('page'))->render() }}</div>
+            <div class="card-body">{{ $imoveis->appends(Request::except('page'))->render() }}</div>
         </div>
     </div>
 </div>
-<small>{{ __('app.total') }} {{ __('imovel.imovel') }}  : {{ $imovels->total() }} </small>
+<small>{{ __('app.total') }} {{ __('imovel.imovel') }}  : {{ $imoveis->total() }} </small>
 @endsection

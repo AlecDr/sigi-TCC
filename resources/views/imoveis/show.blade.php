@@ -25,10 +25,10 @@
             </div>
             <div class="card-footer">
                 @can('update', $imovel)
-                    <a href="{{ route('imovels.edit', $imovel) }}" id="edit-imovel-{{ $imovel->id }}" class="btn btn-warning">{{ __('imovel.edit') }}</a>
+                    <a href="{{ route('imoveis.edit', $imovel) }}" id="edit-imovel-{{ $imovel->id }}" class="btn btn-warning">{{ __('imovel.edit') }}</a>
                 @endcan
                 @if(auth()->check())
-                    <a href="{{ route('imovels.index') }}" class="btn btn-link">{{ __('imovel.back_to_index') }}</a>
+                    <a href="{{ route('imoveis.index') }}" class="btn btn-link">{{ __('imovel.back_to_index') }}</a>
                 @else
                     <a href="{{ route('imovel_map.index') }}" class="btn btn-link">{{ __('imovel.back_to_index') }}</a>
                 @endif

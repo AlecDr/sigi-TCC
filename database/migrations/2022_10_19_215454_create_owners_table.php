@@ -17,10 +17,14 @@ return new class extends Migration
         Schema::create('owners', function (Blueprint $table) {
             $table->id();
             $table->string('cpf')->unique();
-            $table->string('name_owner');
-            
+            $table->string('name_owner')->nullable();
            
+          
+
             $table->timestamps();
+
+          
+           
         });
     }
 

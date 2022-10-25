@@ -15,9 +15,9 @@ class ImovelController extends Controller
      */
     public function index(Request $request)
     {
-        $imovels = Imovel::all();
+        $imoveis = Imovel::all();
 
-        $geoJSONdata = $imovels->map(function ($imovel) {
+        $geoJSONdata = $imoveis->map(function ($imovel) {
             return [
                 'type'       => 'Feature',
                 'properties' => new ImovelResource($imovel),
