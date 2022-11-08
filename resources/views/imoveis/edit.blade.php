@@ -10,6 +10,8 @@
             <div class="card">
                 <div class="card-header">{{ __('imovel.delete') }}</div>
                 <div class="card-body">
+                    <label class="control-label text-primary">{{ __('imovel.tpImovel') }}</label>
+                    <p>{{ $imovel->tpImovel}}</p>
                     <label class="control-label text-primary">{{ __('imovel.seq') }}</label>
                     <p>{{ $imovel->seq}}</p>
                     <label class="control-label text-primary">{{ __('imovel.setor') }}</label>
@@ -46,11 +48,30 @@
             <form method="POST" action="{{ route('imoveis.update', $imovel) }}" accept-charset="UTF-8">
                 {{ csrf_field() }} {{ method_field('patch') }}
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="seq" class="control-label">{{ __('imovel.seq') }}</label>
-                        <input id="seq" type="text" class="form-control{{ $errors->has('seq') ? ' is-invalid' : '' }}" name="seq" value="{{ old('seq', $imovel->seq) }}" required>
-                        {!! $errors->first('seq', '<span class="invalid-feedback" role="alert">:message</span>') !!}
-                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="sequencial" class="control-label">{{ __('imovel.tpImovel') }}</label>
+                            <div class="form-check">
+                               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Predial
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="2">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                Territorial
+                                </label>
+                            </div>
+                        </div>  
+
+                        <div class="form-group col-md-8">
+                            <label for="sequencial" class="control-label">{{ __('imovel.seq') }}</label>
+                            <input id="seq" type="number" class="form-control{{ $errors->has('seq') ? ' é inválido' : '' }}" name="seq" value="{{ old('seq') }}" required>
+                            {!! $errors->first('seq', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                        </div>
+
+                    </div><br> 
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="setor" class="control-label">{{ __('imovel.setor') }}</label>
@@ -70,12 +91,12 @@
                     </div>
                     <div class="form-group">
                         <label for="cpf" class="control-label">{{ __('imovel.cpf') }}</label>
-                        <input id="cpf" type="text" class="form-control{{ $errors->has('cpf') ? ' é inválido' : '' }}" name="cpf" value="{{ old('cpf', $imovel->cpf) }}" required>
+                        <input id="cpf" type="text" class="form-control{{ $errors->has('cpf') ? ' é inválido' : '' }}" name="cpf" value="{{ old('cpf', $imovel->owner->cpf) }}" required>
                         {!! $errors->first('cpf', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="form-group">
                         <label for="name_owner" class="control-label">{{ __('imovel.name_owner') }}</label>
-                        <input id="name_owner" type="text" class="form-control{{ $errors->has('name_owner') ? ' é inválido' : '' }}" name="name_owner" value="{{ old('name_owner', $imovel->name_owner) }}" required>
+                        <input id="name_owner" type="text" class="form-control{{ $errors->has('name_owner') ? ' é inválido' : '' }}" name="name_owner" value="{{ old('name_owner', $imovel->owner->name_owner) }}" required>
                         {!! $errors->first('name_owner', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="row">

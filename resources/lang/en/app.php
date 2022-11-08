@@ -10,7 +10,7 @@ return [
     // Actions
     'show'           => 'Ver detalhes',
     'edit'           => 'Editar',
-    'delete'         => 'Delete',
+    'delete'         => 'Deletar',
     'cancel'         => 'Cancelar',
     'reset'          => 'Redefinir',
     'delete_confirm' => 'Tem certeza de excluir?',

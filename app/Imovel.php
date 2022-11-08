@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Imovel extends Model
 {
+    use HasFactory;
 
+    protected $table = 'imoveis';
     /**
      * 
      *
@@ -15,15 +17,10 @@ class Imovel extends Model
      */
    
     protected $fillable = [
-        'seq','setor','quadra','lote', 
-        'owner_id','latitude','longitude','creator_id',
+        'seq','setor','quadra','lote','owner_id','latitude','longitude','creator_id',
     ];
-
-    
-    use HasFactory;
-    protected $table = 'imoveis';
-
-     /**
+     
+    /**
      * Get all of the Owner for the Imovel
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -32,7 +29,7 @@ class Imovel extends Model
         
         return $this->belongsTo(Owner::class);
     }
-
+    
     /**
      * 
      *
@@ -59,8 +56,6 @@ class Imovel extends Model
 
         return $link;
     }
-
- 
 
     /**
      * 
@@ -92,11 +87,11 @@ class Imovel extends Model
     public function getMapPopupContentAttribute()
     {
         $mapPopupContent = '';
-        $mapPopupContent .= '<div class="my-2"><strong>'.__('imovel.seq').':</strong><br>'.$this->seq_link.'</div>';
-        $mapPopupContent .= '<div class="my-2"><strong>'.__('imovel.setor').':</strong><br>'.$this->setor.'</div>';
-        $mapPopupContent .= '<div class="my-2"><strong>'.__('imovel.quadra').':</strong><br>'.$this->quadra.'</div>';
-        $mapPopupContent .= '<div class="my-2"><strong>'.__('imovel.lote').':</strong><br>'.$this->lote.'</div>';
-
-        return $mapPopupContent;
+        $mapPopupContent .= '<div class="title"><strong>'.__('imovel.seq').':</strong>'.$this->seq_link. '</div>';
+        $mapPopupContent .= '<div class="my-2"><strong>'.__('imovel.setor').':</strong>'.$this->setor.'</div>';
+        $mapPopupContent .= '<div class="my-2"><strong>'.__('imovel.quadra').':</strong>'.$this->quadra.'</div>';
+        $mapPopupContent .= '<div class="my-2"><strong>'.__('imovel.lote').':</strong>'.$this->lote.'</div>';
+            return $mapPopupContent;
     } 
+    
 }

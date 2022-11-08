@@ -13,12 +13,16 @@ $factory->define(Imovel::class, function (Faker $faker) {
     $maxLongitude = $mapCenterLongitude + 0.07;
 
     return [
-        'name'       => ucwords($faker->words(2, true)),
-        'address'    => $faker->address,
-        'latitude'   => $faker->latitude($minLatitude, $maxLatitude),
-        'longitude'  => $faker->longitude($minLongitude, $maxLongitude),
-        'creator_id' => function () {
+        'seq'       => ucwords($faker->words(2, true)),
+        'setor'     => $faker->setor,
+        'quadra'    => $faker->quadra,
+        'lote'      => $faker->lote,
+        'owner_id'  => $faker->owner_id,
+        'latitude'  => $faker->latitude($minLatitude, $maxLatitude),
+        'longitude' => $faker->longitude($minLongitude, $maxLongitude),
+        'creator_id'=> function () {
             return factory(User::class)->create()->id;
         },
     ];
 });
+

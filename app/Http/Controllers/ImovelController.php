@@ -19,8 +19,8 @@ class ImovelController extends Controller
         $this->authorize('manage_imovel');
 
         $imovelQuery = Imovel::query();
-        #$imovelQuery->where('seq', 'like', '%'.request('q').'%');
-       # $imovelQuery->where('name_owner_id', 'like', '%'.request('q').'%');
+        $imovelQuery->where('seq', 'like', '%'.request('q').'%');
+        #$imovelQuery->where('owner_name_owner', 'like', '%'.request('q').'%');
         $imoveis = $imovelQuery->paginate(5);
 
           
@@ -74,7 +74,7 @@ class ImovelController extends Controller
 
         $imovel = Imovel::create($newImovel);
 
-        return redirect()->route('imoveis.show', $imovel);
+        return redirect()->route('imoveis.index', $imovel);
     }
 
     /**
@@ -132,12 +132,10 @@ class ImovelController extends Controller
         }
         
         $newImovel['owner_id'] = $owner->id;
-
-
-        
+     
         $imovel->update($imovelData);
 
-        return redirect()->route('imoveis.show', $imovel);
+        return redirect()->route('imoveis.index', $imovel);
     }
 
     /**

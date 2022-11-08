@@ -11,11 +11,31 @@
             <form method="POST" action="{{ route('imoveis.store') }}" accept-charset="UTF-8">
                 {{ csrf_field() }}
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="sequencial" class="control-label">{{ __('imovel.seq') }}</label>
-                        <input id="seq" type="number" class="form-control{{ $errors->has('seq') ? ' é inválido' : '' }}" name="seq" value="{{ old('seq') }}" required>
-                        {!! $errors->first('seq', '<span class="invalid-feedback" role="alert">:message</span>') !!}
-                    </div>
+
+                    <div class="form-row">
+                      <div class="col-md-4">
+                            <label for="tpImovel" class="control-label">{{ __('imovel.tpImovel') }}</label>
+                            <div class="form-check">
+                               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="building">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Predial
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="territory">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                Territorial
+                                </label>
+                            </div>
+                    </div> 
+
+                        <div class="form-group col-md-8">
+                            <label for="sequencial" class="control-label">{{ __('imovel.seq') }}</label>
+                            <input id="seq" type="number" class="form-control{{ $errors->has('seq') ? ' é inválido' : '' }}" name="seq" value="{{ old('seq') }}" required>
+                            {!! $errors->first('seq', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                        </div>
+
+                    </div><br> 
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="setor" class="control-label">{{ __('imovel.setor') }}</label>
@@ -36,12 +56,12 @@
                     
                     <div class="form-group">
                         <label for="cpf" class="control-label">{{ __('imovel.cpf') }}</label>
-                        <input id="cpf" type="text" class="form-control{{ $errors->has('cpf') ? ' é inválido' : '' }}" name="cpf" value="{{ old('cpf') }}" required>
+                        <input id="cpf" type="text" class="form-control{{ $errors->has('cpf') ? ' é inválido' : '' }}" name="cpf" value="{{ old('owner.cpf') }}" required>
                         {!! $errors->first('cpf', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="form-group">
                         <label for="name_owner" class="control-label">{{ __('imovel.name_owner') }}</label>
-                        <input id="name_owner" type="text" class="form-control{{ $errors->has('name_owner') ? ' é inválido' : '' }}" name="name_owner" value="{{ old('name_owner') }}" required>
+                        <input id="name_owner" type="text" class="form-control{{ $errors->has('name_owner') ? ' é inválido' : '' }}" name="name_owner" value="{{ old('owner.name_owner') }}" required>
                         {!! $errors->first('name_owner', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="row">
@@ -119,5 +139,7 @@ crossorigin=""/>
     }
     $('#latitude').on('input', updateMarkerByInputs);
     $('#longitude').on('input', updateMarkerByInputs);
+
+    
 </script>
 @endpush

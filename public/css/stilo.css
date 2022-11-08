@@ -11,19 +11,14 @@ body {
   background-color: #f1f1f1;
 }
 
-img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
 
 #app {
-  
   z-index: 99999;
-  background: white;
+  background: #ffffff;
   color: black;
   
 }
+
 
 #export {
   top: 10px;
@@ -31,40 +26,209 @@ img {
 
 .leaflet-popup-content-wrapper {
   border-radius: 3px;
+  
 }
 
 .leaflet-popup-content {
   width: 200px !important;
-  padding: 20px 8px;
 }
 
 
-.autocomplete {
-  background: #fff;
-  height: 100%;
-  width: 420px;
-  padding: 15px 20px;
-  overflow: hidden;
-}
-
-
-
-/* Style buttons */
-.btn-link {
+.btn-link-1 {
   
-  background-color: DodgerBlue; /* Blue background */
-  border: none; /* Remove borders */
-  color: #f1f1f1 !important; /* White text */
-  padding: 8px 16px; /* Some padding */
-  font-size: 16px; /* Set a font size */
-  cursor: pointer; /* Mouse pointer on hover */
+  background-color: DodgerBlue; 
+  border: none; 
+  color: #f1f1f1 !important; 
+  padding: 8px; 
+  font-size: 14px; 
+  cursor: pointer; 
   border-radius: 3px;
   text-decoration: none;
   
 }
 
-/* Darker background on mouse-over */
-.btn-link:hover {
+.btn-link-1:hover {
   background-color: RoyalBlue;
   text-decoration: none;
+}
+
+.navbar-brand img{
+  width: 100px;
+}
+
+.nav-item{
+  margin-top: 20px;
+}
+
+.logout-form{
+  border-radius: 0;
+}
+
+
+.card footer {
+  background-color:#060635 ;
+  border-radius: 0 0 3px 3px;
+  padding: 1rem 0;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+
+.building.leaflet-marker-icon {
+	background: #f66
+}
+
+.territory.leaflet-marker-icon {
+	background: #66f
+}
+
+/*****************************************************/
+
+
+element.style {
+  margin-top: 0;
+  left: 0;
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+.leaflet-touch .locate-button {
+  width: 34px;
+  height: 34px;
+}
+
+.leaflet-touch .locate-button {
+  width: 34px;
+  height: 34px;
+}
+
+.leaflet-touch .leaflet-bar {
+  box-shadow: none;
+}
+
+.leaflet-left .leaflet-control {
+  margin-left: 10px;
+}
+.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+  border: 2px solid rgba(0,0,0,0.2);
+  background-clip: padding-box;
+}
+.leaflet-touch .leaflet-control-attribution, .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+  box-shadow: none;
+}
+
+.leaflet-left .leaflet-control {
+  margin-left: 10px;}
+
+  .leaflet-top .leaflet-control {
+    margin-top: 10px;
+}
+
+.locate-button {
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  width: 26px;
+  height: 26px;
+  z-index: 999;
+  cursor: pointer;
+  display: none;
+  padding: 5px;
+  background: #fff;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 65%);
+}
+
+
+.locate-active {
+  fill: red;
+  
+}
+
+.leaflet-control {
+  position: relative;
+  z-index: 800;
+  pointer-events: visiblePainted;
+  pointer-events: auto;
+  float: left;
+  clear: both;
+}
+
+
+.located-animation {
+  width: 17px;
+  height: 17px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background: #2a93ee;
+  animation: border-pulse 2s infinite;
+}
+
+.leaflet-interactive {
+  cursor: pointer;
+}
+
+.leaflet-marker-icon, .leaflet-marker-shadow {
+  display: block;
+}
+
+.leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.leaflet-pane, .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-tile-container, .leaflet-pane > svg, .leaflet-pane > canvas, .leaflet-zoom-box, .leaflet-image-layer, .leaflet-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+*, :after, :before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.leaflet-zoom-animated {
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+@keyframes border-pulse{
+0% {
+  box-shadow: 0 0 0 0 rgb(255 255 255);
+}
+70% {
+  box-shadow: 0 0 0 10px rgb(255 0 0 / 0%);
+}
+100% {
+  box-shadow: 0 0 0 0 rgb(255 0 0 / 0%);
+}}
+
+
+.leaflet-container {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.leaflet-top, .leaflet-bottom {
+  position: absolute;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.leaflet-touch .leaflet-control-attribution, .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+  box-shadow: none;
 }

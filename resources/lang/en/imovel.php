@@ -47,4 +47,7 @@ return [
     'longitude'  => 'Longitude',
     'location'   => 'Localização',
     'coordinate' => 'Coordinate',
+    'territory'  => 'Territorial',
+    'building'   => 'Predial',
+    'tpImovel'   => 'Tipo de imóvel',
 ];
