@@ -57,7 +57,7 @@
                         <td>{{ $imovel->longitude }}</td>
 
                         <td class="text-center">
-                            <a href="{{ route('imoveis.show', $imovel) }}" id="show-imovel-{{ $imovel->id }}">{{ __('app.show') }}</a>
+                            <a href="{{ route('imoveis.show', $imovel->id) }}" id="show-imovel-{{ $imovel->id }}">{{ __('app.show') }}</a>
                         </td>
                     </tr>
                     @endforeach

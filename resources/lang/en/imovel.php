@@ -50,4 +50,10 @@ return [
     'territory'  => 'Territorial',
     'building'   => 'Predial',
     'tpImovel'   => 'Tipo de imóvel',
+
+    // Onwner Attributes
+    'owner'     => [
+        'cpf'           => 'CPF do Dono',
+        'name_owner'    => 'Nome do Dono'
+    ]
 ];
